@@ -2,7 +2,19 @@ ja:
   activerecord:
     models:
       year: 年
+      semester: 学期
+      subject: 教科
 
     attributes:
       year:
         class_year: 期
+        semesters: :activerecord.models.semester
+
+      semester:
+        identifier: 識別子
+        year: :activerecord.models.year
+
+      subject:
+        staff_name: 教員名
+        title_en: 教科名(英)
+        title_ja: 教科名(日)
