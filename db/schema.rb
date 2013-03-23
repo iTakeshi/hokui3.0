@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130323121603) do
+ActiveRecord::Schema.define(version: 20130323123308) do
+
+  create_table "semesters", force: true do |t|
+    t.integer  "year_id",    null: false
+    t.string   "identifier", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "semesters", ["year_id"], name: "index_semesters_on_year_id"
 
   create_table "years", force: true do |t|
     t.integer  "class_year", null: false
