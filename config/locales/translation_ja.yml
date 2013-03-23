@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      year: 年
+
+    attributes:
+      year:
+        class_year: 期
