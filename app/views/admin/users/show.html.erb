@@ -1,0 +1,45 @@
+<h1>ユーザー管理</h1>
+
+<p>
+  <%= link_to 'ユーザー一覧へ戻る', admin_users_path %>
+</p>
+
+<dl class="dl-horizontal">
+  <dt>ID</dt><dd><%= @user.id %></dd>
+  <dt>氏名</dt><dd><%= @user.full_name %></dd>
+  <dt>ニックネーム</dt><dd><%= @user.handle_name %></dd>
+  <dt>生年月日</dt><dd><%= @user.birthday %></dd>
+  <dt>ELMSメール</dt><dd><%= @user.email_official %></dd>
+  <dt>携帯メール</dt><dd><%= @user.email_private %></dd>
+  <dt>期</dt><dd><%= @user.year.class_year %></dd>
+  <dt>最終ログイン日時</dt><dd><%= @user.last_login_at ? @user.last_login_at : '未ログイン' %></dd>
+  <dt>登録日</dt><dd><%= @user.created_at.to_date %></dd>
+</dl>
+
+<div>
+  <dl class="dl-horizontal">
+    <dt>現在の状態</dt><dd><strong><%= @user.status_str %></strong></dd>
+    <% if @user.status == 2 %>
+      <dt>操作</dt>
+      <dd>
+        <%= link_to '承認', approve_admin_user_path(@user), method: :patch, class: "btn btn-success" %>
+        <%= link_to '拒否', reject_admin_user_path(@user), method: :patch, class: "btn btn-danger", data: { confirm: "#{@user.full_name}さんを拒否します。本当によろしいですか？" } %>
+      </dd>
+    <% end %>
+  </dl>
+</div>
+<div>
+  <dl class="dl-horizontal">
+    <dt>管理者権限</dt><dd><strong><%= @user.is_admin ? '管理者' : '一般（管理者権限なし）' %></strong></dd>
+    <dt>操作</dt>
+    <dd>
+      <% if @user.is_admin %>
+        <%= link_to '昇格', 'javascript: void(0)', method: :patch, class: "btn btn-success disabled", data: { confirm: "#{@user.full_name}さんを管理者へ昇格します。よろしいですか？" } %>
+        <%= link_to '降格', demote_admin_user_path(@user), method: :patch, class: "btn btn-danger", data: { confirm: "#{@user.full_name}さんを一般ユーザーへ降格します。よろしいですか？" } %>
+      <% else %>
+        <%= link_to '昇格', promote_admin_user_path(@user), method: :patch, class: "btn btn-success", data: { confirm: "#{@user.full_name}さんを管理者へ昇格します。よろしいですか？" } %>
+        <%= link_to '降格', 'javascript: void(0)', method: :patch, class: "btn btn-danger disabled", data: { confirm: "#{@user.full_name}さんを一般ユーザーへ降格します。よろしいですか？" } %>
+      <% end %>
+    </dd>
+  </dl>
+</div>

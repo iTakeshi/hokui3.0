@@ -1,0 +1,28 @@
+<h1>ユーザー管理</h1>
+
+<p>
+  各ユーザーに対する操作は、「詳細」のページで行えます。
+</p>
+
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>氏名</th>
+    <th>ニックネーム</th>
+    <th>ELMSメール</th>
+    <th>権限</th>
+    <th>状態</th>
+    <th>詳細</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.full_name %></td>
+      <td><%= user.handle_name %></td>
+      <td><%= user.email_official %></td>
+      <td><%= user.is_admin ? '管理者' : '' %></td>
+      <td><%= user.status == 0 ? '' : user.status_str %></td>
+      <td><%= link_to '詳細', admin_user_path(user) %></td>
+    </tr>
+  <%end %>
+</table>
