@@ -4,17 +4,40 @@ ja:
       year: 年
       semester: 学期
       subject: 教科
+      user: ユーザー
 
     attributes:
       year:
         class_year: 期
         semesters: :activerecord.models.semester
+        users: :activerecord.models.user
 
       semester:
         identifier: 識別子
         year: :activerecord.models.year
+        subjects: :activerecord.models.subject
 
       subject:
         staff_name: 教員名
         title_en: 教科名(英)
         title_ja: 教科名(日)
+        semesters: :activerecord.models.semester
+
+      user:
+        auth_token: auth_token
+        birthday: 生年月日
+        email_official: ELMSメール
+        email_private: 携帯メール
+        family_name: 苗字
+        given_name: 名前
+        handle_name: ニックネーム
+        is_admin: is_admin
+        last_login_at: last_login_at
+        password: パスワード
+        password_confirmation: パスワード
+        password_digest: password_digest
+        secret_token: secret_token
+        secret_token_generated_at: secret_token_generated_at
+        status: 状態
+        year: :activerecord.models.year
+        year_id: 期
