@@ -22,13 +22,12 @@ ActiveRecord::Schema.define(version: 20130324013929) do
 
   add_index "semesters", ["year_id"], name: "index_semesters_on_year_id"
 
-  create_table "semesters_subjects", force: true do |t|
-    t.integer "semester_id", null: false
-    t.integer "subject_id",  null: false
+  create_table "semesters_subjects", id: false, force: true do |t|
+    t.integer "semester_id"
+    t.integer "subject_id"
   end
 
-  add_index "semesters_subjects", ["semester_id"], name: "index_semesters_subjects_on_semester_id"
-  add_index "semesters_subjects", ["subject_id"], name: "index_semesters_subjects_on_subject_id"
+  add_index "semesters_subjects", ["semester_id", "subject_id"], name: "index_semesters_subjects_on_semester_id_and_subject_id", unique: true
 
   create_table "subjects", force: true do |t|
     t.string   "title_en",   null: false

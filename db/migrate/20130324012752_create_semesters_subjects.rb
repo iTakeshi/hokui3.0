@@ -1,8 +1,9 @@
 class CreateSemestersSubjects < ActiveRecord::Migration
   def change
-    create_table :semesters_subjects do |t|
-      t.references :semester, null: false, index: true
-      t.references :subject,  null: false, index: true
+    create_table :semesters_subjects, id: false do |t|
+      t.references :semester
+      t.references :subject
     end
+    add_index :semesters_subjects, [:semester_id, :subject_id], unique: true
   end
 end
