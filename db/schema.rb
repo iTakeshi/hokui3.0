@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130323123640) do
+ActiveRecord::Schema.define(version: 20130324012752) do
 
   create_table "semesters", force: true do |t|
     t.integer  "year_id",    null: false
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(version: 20130323123640) do
   end
 
   add_index "semesters", ["year_id"], name: "index_semesters_on_year_id"
+
+  create_table "semesters_subjects", force: true do |t|
+    t.integer "semester_id", null: false
+    t.integer "subject_id",  null: false
+  end
+
+  add_index "semesters_subjects", ["semester_id"], name: "index_semesters_subjects_on_semester_id"
+  add_index "semesters_subjects", ["subject_id"], name: "index_semesters_subjects_on_subject_id"
 
   create_table "subjects", force: true do |t|
     t.string   "title_en",   null: false
