@@ -8,7 +8,7 @@ class Admin::YearsController < ApplicationController
   end
 
   def create
-    @year = Year.new(year: params[:year][:class_year])
+    @year = Year.new(class_year: params[:year][:class_year])
 
     if @year.save
       redirect_to admin_years_path
