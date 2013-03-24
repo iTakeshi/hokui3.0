@@ -1,4 +1,7 @@
 HokuiNet::Application.routes.draw do
+  get "signup/new"
+  get "signup/create"
+  get "signup/confirm"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
