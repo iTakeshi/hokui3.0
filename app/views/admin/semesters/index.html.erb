@@ -19,7 +19,7 @@
       <td>
         <ul class="ul-inline">
           <% semester.subjects.each do |subject| %>
-            <li><%= link_to subject.title_ja, admin_subject_path(subject) %></li>
+            <li><%= subject.title_ja %></li>
           <% end %>
         </ul>
       </td>
