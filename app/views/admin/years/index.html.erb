@@ -1,2 +1,11 @@
-<h1>Admin::Years#index</h1>
-<p>Find me in app/views/admin/years/index.html.erb</p>
+<h1>登録されている期</h1>
+
+<p>
+  <%= link_to '新規登録', new_admin_year_path %>
+</p>
+
+<ul>
+  <% @years.each do |year| %>
+    <li><%= year.class_year %>期</li>
+  <% end %>
+</ul>

@@ -1,6 +1,4 @@
 HokuiNet::Application.routes.draw do
-  get "years/index"
-  get "years/new"
   get  '/signup' => 'signup#new'
   post '/signup' => 'signup#create'
   get  '/signup/confirm/:secret_token' => 'signup#confirm', as: 'confirm_signup'
@@ -19,6 +17,8 @@ HokuiNet::Application.routes.draw do
     end
 
     resources :subjects, only: %i(index new create edit update)
+
+    resources :years, only: %i(index new create)
 
     root to: 'index#index'
   end
