@@ -19,7 +19,7 @@ HokuiNet::Application.routes.draw do
     resources :subjects, only: %i(index new create edit update)
 
     resources :years, only: %i(index new create) do
-      resources :semesters, only: %i(index new edit)
+      resources :semesters, only: %i(index new create edit)
     end
 
     root to: 'index#index'
