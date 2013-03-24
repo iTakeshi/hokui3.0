@@ -4,8 +4,11 @@
   <%= link_to '新規登録', new_admin_year_path %>
 </p>
 
+<p>
+  リンク先でカリキュラムを編集できます。
+</p>
 <ul>
   <% @years.each do |year| %>
-    <li><%= year.class_year %>期</li>
+    <li><%= link_to "#{year.class_year}期", admin_year_semesters_path(year) %></li>
   <% end %>
 </ul>

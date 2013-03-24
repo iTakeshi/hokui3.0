@@ -4,4 +4,8 @@ class Semester < ActiveRecord::Base
 
   validates_presence_of :year_id
   validates_presence_of :identifier
+
+  def identifier_to_str
+    "#{identifier[0]}年#{identifier[1] == 'a' ? '前期' : '後期'}"
+  end
 end

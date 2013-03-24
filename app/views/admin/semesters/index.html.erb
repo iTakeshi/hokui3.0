@@ -1,2 +1,29 @@
-<h1>Admin::Semesters#index</h1>
-<p>Find me in app/views/admin/semesters/index.html.erb</p>
+<h1>カリキュラム編集 - <%= @year.class_year %>期</h1>
+
+<p>
+  <%= link_to '一覧に戻る', admin_years_path %>
+</p>
+
+<p>
+  <%= link_to '新学期', new_admin_year_semester_path(@year) %>
+</p>
+<table class="table table-condensed">
+  <tr>
+    <th>学期</th>
+    <th>教科</th>
+    <th>編集</th>
+  </tr>
+  <% @year_semesters.each do |semester| %>
+    <tr>
+      <td><%= semester.identifier_to_str %></td>
+      <td>
+        <ul class="ul-inline">
+          <% semester.subjects.each do |subject| %>
+            <li><%= link_to subject.title_ja, admin_subject_path(subject) %></li>
+          <% end %>
+        </ul>
+      </td>
+      <td><%= link_to '編集', edit_admin_year_semester_path(@year, semester) %></td>
+    </tr>
+  <% end %>
+</table>
