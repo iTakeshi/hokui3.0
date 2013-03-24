@@ -1,2 +1,7 @@
-<h1>Signup#confirm</h1>
-<p>Find me in app/views/signup/confirm.html.erb</p>
+<h1>北医ネットへようこそ！</h1>
+
+<p>
+  <%= @user.full_name %>さん、北医ネットへようこそ！<br>
+  新規登録の認証に成功しました。<br>
+  管理者の承認があるまで、しばらくお待ちください。承認されると、<%= @user.email_official %>に通知されます。
+</p>
