@@ -1,6 +1,6 @@
 class Admin::SemestersController < Admin::ApplicationController
   before_action :set_year
-  before_action :set_semester, only: :edit
+  before_action :set_semester, only: %i(edit update)
 
   def index
     @year_semesters = @year.semesters.includes(:subjects)
@@ -25,6 +25,11 @@ class Admin::SemestersController < Admin::ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    @semester.subjects = Subject.where(id: params[:semester][:subjects])
+    redirect_to action: :index
   end
 
   private
