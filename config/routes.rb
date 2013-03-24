@@ -16,6 +16,8 @@ HokuiNet::Application.routes.draw do
       end
     end
 
+    resources :subjects, only: %i(index new create edit update)
+
     root to: 'index#index'
   end
 

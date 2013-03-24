@@ -1,0 +1,21 @@
+<h1>教員変更</h1>
+
+<dl class="dl-horizontal">
+  <dt>教科名（日）</dt><dd><%= @subject.title_ja %></dd>
+  <dt>教科名（英）</dt><dd><%= @subject.title_en %></dd>
+</dl>
+
+<%= form_tag admin_subject_path(@subject), { method: :patch, class: "form-horizontal" } do %>
+  <fieldset>
+    <div class="control-group">
+      <%= label_tag :staff_name, '教員名', class: 'control-label' %>
+      <div class="controls">
+        <%= text_field_tag :staff_name, @subject.staff_name %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= submit_tag '変更', class: 'btn btn-primary', data: { disable_with: '送信中' } %>
+    </div>
+  </fieldset>
+<% end %>

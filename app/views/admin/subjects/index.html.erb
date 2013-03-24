@@ -1,0 +1,24 @@
+<h1>教科一覧</h1>
+
+<p>
+  <%= link_to '新規登録', new_admin_subject_path %>
+</p>
+
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>教科名（日）</th>
+    <th>教科名（英）</th>
+    <th>教員名</th>
+    <th>教員変更</th>
+  </tr>
+  <% @subjects.each do |subject| %>
+    <tr>
+      <td><%= subject.id %></td>
+      <td><%= subject.title_ja %></td>
+      <td><%= subject.title_en %></td>
+      <td><%= subject.staff_name %></td>
+      <td><%= link_to '教員変更', edit_admin_subject_path(subject) %></td>
+    </tr>
+  <% end %>
+</table>
