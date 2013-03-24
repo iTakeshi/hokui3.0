@@ -1,0 +1,26 @@
+<h1>北医ネットにようこそ。</h1>
+
+<p>利用するためには、ログインする必要があります。</p>
+
+<%= form_tag '/login', class: 'form-horizontal' do %>
+  <fieldset>
+    <div class="control-group">
+      <%= label_tag :email_official, 'ELMSメール', class: 'control-label' %>
+      <div class="controls">
+        <%= text_field_tag :email_official %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= label_tag :password, 'パスワード', class: 'control-label' %>
+      <div class="controls">
+        <%= password_field_tag :password %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <p><%= submit_tag 'GO!', class: 'btn btn-primary', data: { disable_with: '送信中...' } %></p>
+      <p>初めての方へ： 北医ネットを利用するには<%= link_to 'ユーザー登録', signup_path %>が必要です。</p>
+    </div>
+  </fieldset>
+<% end %>

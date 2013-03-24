@@ -1,4 +1,7 @@
 class SignupController < ApplicationController
+  skip_before_action :authenticate
+  skip_before_action :update_last_login_timestamp
+
   def new
     @user = User.new
   end

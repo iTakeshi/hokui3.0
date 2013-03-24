@@ -4,6 +4,7 @@ HokuiNet::Application.routes.draw do
   get  '/signup/confirm/:secret_token' => 'signup#confirm', as: 'confirm_signup'
 
   get  '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
 
   namespace :admin do
     resources :users, only: %i(index show) do
