@@ -33,6 +33,10 @@ class Material < ActiveRecord::Base
     [self.file_name, self.file_ext].join('.')
   end
 
+  def file_path
+    Rails.root.join('public', 'uploads', self.internal_file_name)
+  end
+
   def number_to_str
     return self.number unless self.material_type == :exams
     case self.number

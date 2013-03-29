@@ -1,6 +1,11 @@
 class MaterialsController < ApplicationController
   before_action :set_subject
 
+  def download
+    material = Material.find(params[:id])
+    send_file material.file_path, filename: material.file_name, type: material.file_content_type, disposition: :inline
+  end
+
   def exams
     @exams = Material.exams
   end
