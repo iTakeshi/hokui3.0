@@ -6,12 +6,18 @@ HokuiNet::Application.routes.draw do
   get  '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
 
-  get  '/study' => 'study#index', as: 'study'
-  get  '/study/:subject_title_en' => 'study#subject', as: 'study_subject'
-  get  '/study/:subject_title_en/materials/exams'    => 'materials#exams',    as: 'study_subject_exams'
-  get  '/study/:subject_title_en/materials/quizzes'  => 'materials#quizzes',  as: 'study_subject_quizzes'
-  get  '/study/:subject_title_en/materials/notes'    => 'materials#notes',    as: 'study_subject_notes'
-  get  '/study/:subject_title_en/materials/personal' => 'materials#personal', as: 'study_subject_personal'
+  get   '/study' => 'study#index', as: 'study'
+  get   '/study/:subject_title_en' => 'study#subject', as: 'study_subject'
+  scope '/study/:subject_title_en' do
+    resources :materials, except: %i(index show), as: 'study_subject_materials' do
+      collection do
+        get 'exams'
+        get 'quizzes'
+        get 'notes'
+        get 'personal'
+      end
+    end
+  end
 
   namespace :admin do
     resources :users, only: %i(index show) do

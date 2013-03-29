@@ -1,6 +1,6 @@
 <h1><%= @subject.title_ja %></h1>
 
-<%= link_to '過去問', study_subject_exams_path(@subject) %>
-<%= link_to '小テスト', study_subject_quizzes_path(@subject) %>
-<%= link_to '講義資料', study_subject_notes_path(@subject) %>
-<%= link_to '個人作成資料', study_subject_personal_path(@subject) %>
+<%= link_to '過去問', exams_study_subject_materials_path(@subject) %>
+<%= link_to '小テスト', quizzes_study_subject_materials_path(@subject) %>
+<%= link_to '講義資料', notes_study_subject_materials_path(@subject) %>
+<%= link_to '個人作成資料', personal_study_subject_materials_path(@subject) %>
