@@ -2,7 +2,9 @@ class Material < ActiveRecord::Base
   belongs_to :subject
   belongs_to :user
 
-  scope :exams, -> { where(material_type: :exams) }
+  validates_inclusion_of :material_type, in: %w(exam quiz note personal_file)
+
+  scope :exams, -> { where(material_type: :exam) }
 
   def set_page
     last_page = Material.where(file_name: self.file_name).pluck(:page).max
@@ -43,7 +45,7 @@ class Material < ActiveRecord::Base
   end
 
   def number_to_str
-    return self.number unless self.material_type == :exams
+    return self.number unless self.material_type == :exam
     case self.number
     when 1..6
       return "第#{self.number}回"
