@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130329095508) do
+ActiveRecord::Schema.define(version: 20130329104759) do
 
   create_table "materials", force: true do |t|
     t.integer  "subject_id",                         null: false
@@ -29,7 +29,6 @@ ActiveRecord::Schema.define(version: 20130329095508) do
     t.integer  "page",              default: 1,      null: false
   end
 
-  add_index "materials", ["file_name"], name: "index_materials_on_file_name", unique: true
   add_index "materials", ["subject_id"], name: "index_materials_on_subject_id"
   add_index "materials", ["user_id"], name: "index_materials_on_user_id"
 

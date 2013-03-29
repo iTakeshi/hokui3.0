@@ -7,7 +7,6 @@ class Material < ActiveRecord::Base
   def set_page
     last_page = Material.where(file_name: self.file_name).pluck(:page).max
     self.page = last_page.to_i + 1 # if last_page == nil, nil.to_i returns 0.
-    self.file_name << "-#{self.page}" if self.page > 1
   end
 
   def set_file_params(file_params)
@@ -30,7 +29,9 @@ class Material < ActiveRecord::Base
   end
 
   def display_name
-    [self.file_name, self.file_ext].join('.')
+    name = self.file_name
+    name << "-#{self.page}" if page > 1
+    name << ".#{self.file_ext}"
   end
 
   def file_path
