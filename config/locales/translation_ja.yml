@@ -5,6 +5,7 @@ ja:
       semester: 学期
       subject: 教科
       user: ユーザー
+      material: 資料
 
     attributes:
       year:
@@ -41,3 +42,13 @@ ja:
         status: 状態
         year: :activerecord.models.year
         year_id: 期
+
+      material:
+        class_year: 期
+        comments: コメント
+        file_content_type: file_content_type
+        file_name: ファイル名
+        number: 回
+        subject: :activerecord.models.subject
+        user: :activerecord.models.user
+        with_answer: 解答付き
