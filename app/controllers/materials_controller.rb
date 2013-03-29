@@ -1,5 +1,6 @@
 class MaterialsController < ApplicationController
   before_action :set_subject
+  before_action :set_material, only: %i(edit update)
 
   def download
     material = Material.find(params[:id])
@@ -28,9 +29,24 @@ class MaterialsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @material.comments = material_params[:comments]
+    @material.file_content_type = file_params[:file].content_type
+    @material.save!
+    @material.save_file(file_params[:file])
+    redirect_to exams_study_subject_materials_path(@subject)
+  end
+
   private
   def set_subject
     @subject = Subject.find_by(title_en: params[:subject_title_en])
+  end
+
+  def set_material
+    @material = Material.find(params[:id])
   end
 
   def material_params

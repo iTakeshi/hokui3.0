@@ -1,0 +1,72 @@
+<h1>過去問ファイル編集</h1>
+<h2><%= @subject.title_ja %></h2>
+
+<p>
+  利用者の混乱を避けるため、網掛けになっている項目は編集できません。<br>
+  これらの項目を編集したい場合は、このファイルを削除した上で新規に登録してください。
+</p>
+
+<%= form_for @material, url: study_subject_material_path(@subject, @material), html: { class: "form-horizontal" } do |f| %>
+  <% if @material.errors.any? %>
+    <div class="form-errors">
+      <h3><%= @material.errors.count %>個の項目にエラーがあります。アップロードに失敗しました。</h3>
+      <ul>
+        <% @material.errors.full_messages.each do |m| %>
+          <li><%= m %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <%= f.hidden_field :material_type %>
+
+    <div class="control-group">
+      <%= f.label :class_year, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :class_year, disabled: true %> 編集不可
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :number, class: 'control-label' %>
+      <div class="controls">
+        <%= f.select :number, options_for_select('中間' => 11, '期末' => 12, '第1回' => 1, '第2回' => 2, '第3回' => 3, '第4回' => 4, '第5回' => 5, '第6回' => 6), { prompt: '選択' }, { disabled: true } %>
+        編集不可
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :with_answer, class: 'control-label' %>
+      <div class="controls">
+        <%= f.check_box :with_answer, disabled: true %> 編集不可
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :comments, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :comments %> 30文字以内を目安に
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :file, 'ファイル',  class: 'control-label' %>
+      <div class="controls">
+        <%= f.file_field :file %><br>
+        指定しない場合は、既存のファイルをそのまま使用します。
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :file_name, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :file_name, disabled: true %> 編集不可
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit '登録', class: 'btn btn-primary', data: { disable_with: '送信中...' } %>
+    </div>
+  </fieldset>
+<% end %>
