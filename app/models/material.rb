@@ -19,9 +19,13 @@ class Material < ActiveRecord::Base
   end
 
   def save_file(file)
-    File.open(Rails.root.join('public', 'uploads', self.internal_file_name), 'wb') do |f|
+    File.open(self.file_path, 'wb') do |f|
       f.write(file.read)
     end
+  end
+
+  def destroy_file
+    File.delete(self.file_path)
   end
 
   def internal_file_name

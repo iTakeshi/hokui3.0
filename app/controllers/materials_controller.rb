@@ -1,6 +1,6 @@
 class MaterialsController < ApplicationController
   before_action :set_subject
-  before_action :set_material, only: %i(edit update)
+  before_action :set_material, only: %i(edit update destroy)
 
   def download
     material = Material.find(params[:id])
@@ -38,6 +38,12 @@ class MaterialsController < ApplicationController
     @material.file_content_type = file_params[:file].content_type
     @material.save!
     @material.save_file(file_params[:file])
+    redirect_to exams_study_subject_materials_path(@subject)
+  end
+
+  def destroy
+    @material.destroy_file
+    @material.destroy!
     redirect_to exams_study_subject_materials_path(@subject)
   end
 
