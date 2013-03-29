@@ -2,6 +2,12 @@ class Material < ActiveRecord::Base
   belongs_to :subject
   belongs_to :user
 
+  def set_page
+    last_page = Material.where(file_name: self.file_name).pluck(:page).max
+    self.page = last_page.to_i + 1 # if last_page == nil, nil.to_i returns 0.
+    self.file_name << "-#{self.page}" if self.page > 1
+  end
+
   def set_file_params(file_params)
     if file_params[:file_name].blank?
       self.file_name = file_params[:file].original_filename.split('.').first

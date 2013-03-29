@@ -12,6 +12,7 @@ class MaterialsController < ApplicationController
     @material = @subject.materials.new(material_params)
     @material.user = current_user
     @material.set_file_params(file_params)
+    @material.set_page
 
     if @material.save
       @material.save_file(file_params[:file])
