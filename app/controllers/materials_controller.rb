@@ -1,6 +1,7 @@
 class MaterialsController < ApplicationController
   before_action :set_subject
   before_action :set_material, only: %i(edit update destroy)
+  before_action :authorize_as_admin_or_file_owner, only: %i(edit update destroy)
 
   def download
     material = Material.find(params[:id])
@@ -48,6 +49,13 @@ class MaterialsController < ApplicationController
   end
 
   private
+  def authorize_as_admin_or_file_owner
+    unless current_user.is_admin or current_user == @material.user
+      flash[:error] = "あなたはこのファイルを編集または削除する権限がありません。"
+      redirect_to exams_study_subject_materials_path(@subject)
+    end
+  end
+
   def set_subject
     @subject = Subject.find_by(title_en: params[:subject_title_en])
   end
