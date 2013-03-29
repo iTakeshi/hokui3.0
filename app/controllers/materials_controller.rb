@@ -4,6 +4,7 @@ class MaterialsController < ApplicationController
 
   def download
     material = Material.find(params[:id])
+    material.increment(:download_count).save!
     send_file material.file_path, filename: material.display_name, type: material.file_content_type, disposition: :inline
   end
 
