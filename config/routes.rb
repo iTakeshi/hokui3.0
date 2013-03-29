@@ -1,11 +1,13 @@
 HokuiNet::Application.routes.draw do
-  get "study/index"
   get  '/signup' => 'signup#new'
   post '/signup' => 'signup#create'
   get  '/signup/confirm/:secret_token' => 'signup#confirm', as: 'confirm_signup'
 
   get  '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
+
+  get  '/study' => 'study#index', as: 'study'
+  get  '/study/:subject_title_en' => 'study#subject', as: 'study_subject'
 
   namespace :admin do
     resources :users, only: %i(index show) do
