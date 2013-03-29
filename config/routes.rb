@@ -18,7 +18,7 @@ HokuiNet::Application.routes.draw do
         get 'exams'
         get 'quizzes'
         get 'notes'
-        get 'personal'
+        get 'personal_files'
       end
     end
   end
