@@ -45,7 +45,7 @@ class Material < ActiveRecord::Base
   end
 
   def number_to_str
-    return self.number unless self.material_type == :exam
+    return self.number unless self.material_type == 'exam'
     case self.number
     when 1..6
       return "第#{self.number}回"
