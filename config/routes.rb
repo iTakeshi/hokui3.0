@@ -10,6 +10,10 @@ HokuiNet::Application.routes.draw do
   get   '/study/:subject_title_en' => 'study#subject', as: 'study_subject'
   scope '/study/:subject_title_en' do
     resources :materials, except: %i(index show), as: 'study_subject_materials' do
+      member do
+        get 'download'
+      end
+
       collection do
         get 'exams'
         get 'quizzes'

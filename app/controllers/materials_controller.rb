@@ -2,6 +2,7 @@ class MaterialsController < ApplicationController
   before_action :set_subject
 
   def exams
+    @exams = Material.exams
   end
 
   def new

@@ -2,6 +2,8 @@ class Material < ActiveRecord::Base
   belongs_to :subject
   belongs_to :user
 
+  scope :exams, -> { where(material_type: :exams) }
+
   def set_page
     last_page = Material.where(file_name: self.file_name).pluck(:page).max
     self.page = last_page.to_i + 1 # if last_page == nil, nil.to_i returns 0.
@@ -25,6 +27,22 @@ class Material < ActiveRecord::Base
 
   def internal_file_name
     [self.id.to_s, self.file_ext].join('.')
+  end
+
+  def display_name
+    [self.file_name, self.file_ext].join('.')
+  end
+
+  def number_to_str
+    return self.number unless self.material_type == :exams
+    case self.number
+    when 1..6
+      return "第#{self.number}回"
+    when 11
+      return "中間"
+    when 12
+      return "期末"
+    end
   end
 
   def file_ext

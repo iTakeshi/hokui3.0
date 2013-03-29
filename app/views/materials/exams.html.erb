@@ -4,3 +4,59 @@
 <p>
   <%= link_to '新規アップロード', new_study_subject_material_path(@subject, type: :exams) %>
 </p>
+
+<table class="table">
+  <tr>
+    <th>期</th>
+    <th>回</th>
+    <th colspan="3">問題</th>
+    <th colspan="3">解答</th>
+  </tr>
+
+  <% @exams.pluck(:class_year).uniq.sort.each do |year| %>
+
+    <% year_displayed = false %>
+    <% year_exams = @exams.where(class_year: year) %>
+    <% year_exams.pluck(:number).uniq.sort.each do |number| %>
+
+      <% number_displayed = false %>
+      <% exams = year_exams.where(number: number) %>
+      <% number_str = exams.first.number_to_str %>
+      <% questions = exams.where(with_answer: false) %>
+      <% answers = exams.where(with_answer: true) %>
+      <% [questions.size, answers.size].max.times do |i| %>
+
+        <tr>
+          <td><%= year_displayed ? '' : year %></td>
+          <% year_displayed = true %>
+          <td><%= number_displayed ? '' : number_str %></td>
+          <% number_displayed = true %>
+
+          <% if questions[i] %>
+            <% material = questions[i] %>
+            <td><%= link_to material.display_name, download_study_subject_material_path(@subject, material) %><br><%= material.comments %></td>
+            <td><%= material.user.handle_name %><br><%= material.download_count %> 回</td>
+            <td>
+              <%= link_to '修正', edit_study_subject_material_path(@subject, material), class: 'btn btn-mini btn-info' %><br>
+              <%= link_to '削除', study_subject_material_path(@subject, material), method: :delete, class: 'btn btn-mini btn-danger' %>
+            </td>
+          <% else %>
+            <td></td><td></td><td></td>
+          <% end %>
+
+          <% if answers[i] %>
+            <% material = answers[i] %>
+            <td><%= link_to material.display_name, download_study_subject_material_path(@subject, material) %><br><%= material.comments %></td>
+            <td><%= material.user.handle_name %><br><%= material.download_count %> 回</td>
+            <td>
+              <%= link_to '修正', edit_study_subject_material_path(@subject, material), class: 'btn btn-mini btn-info' %><br>
+              <%= link_to '削除', study_subject_material_path(@subject, material), method: :delete, class: 'btn btn-mini btn-danger' %>
+            </td>
+          <% else %>
+            <td></td><td></td><td></td>
+          <% end %>
+        </tr>
+      <% end %>
+    <% end %>
+  <% end %>
+</table>
