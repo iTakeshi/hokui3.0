@@ -38,7 +38,7 @@ class Material < ActiveRecord::Base
   end
 
   def display_name
-    name = self.file_name
+    name = self.file_name.dup
     name << "-#{self.page}" if page > 1
     name << ".#{self.file_ext}"
   end
