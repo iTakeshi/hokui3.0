@@ -45,10 +45,18 @@ class MaterialsController < ApplicationController
 
   def update
     @material.comments = material_params[:comments]
-    @material.file_content_type = file_params[:file].content_type
+    if file_params[:file]
+      file = file_params[:file]
+      @material.file_content_type = file.content_type
+      @material.save_file(file)
+    end
     @material.save!
-    @material.save_file(file_params[:file])
-    redirect_to exams_study_subject_materials_path(@subject)
+    case @material.material_type
+    when 'exam'
+      redirect_to exams_study_subject_materials_path(@subject)
+    when 'quiz'
+      redirect_to quizzes_study_subject_materials_path(@subject)
+    end
   end
 
   def destroy
