@@ -1,0 +1,74 @@
+<h1><%= @material.material_type_to_str %>ファイルアップロード</h1>
+<h2><%= @subject.title_ja %></h2>
+
+<%= form_for @material, url: study_subject_materials_path(@subject), html: { class: "form-horizontal" } do |f| %>
+  <% if @material.errors.any? %>
+    <div class="form-errors">
+      <h3><%= @material.errors.count %>個の項目にエラーがあります。アップロードに失敗しました。</h3>
+      <ul>
+        <% @material.errors.full_messages.each do |m| %>
+          <li><%= m %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset>
+    <%= f.hidden_field :material_type %>
+
+    <% unless @material.material_type == 'personal_file' %>
+      <div class="control-group">
+        <%= f.label :class_year, class: 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :class_year %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.label :number, class: 'control-label' %>
+        <div class="controls">
+          <% if @material.material_type == 'exam' %>
+            <%= f.select :number, options_for_select('中間' => 11, '期末' => 12, '第1回' => 1, '第2回' => 2, '第3回' => 3, '第4回' => 4, '第5回' => 5, '第6回' => 6), prompt: '選択' %>
+            試験がその教科を通して2回までの時は「中間」or「期末」、3回以上あるときは「第○回」
+          <% else %>
+            <%= f.number_field :number %>
+          <% end %>
+        </div>
+      </div>
+
+      <% if %w(exam quiz).include? @material.material_type %>
+        <div class="control-group">
+          <%= f.label :with_answer, class: 'control-label' %>
+          <div class="controls">
+            <%= f.check_box :with_answer %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
+    <div class="control-group">
+      <%= f.label :comments, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :comments %> 30文字以内を目安に
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :file, 'ファイル',  class: 'control-label' %>
+      <div class="controls">
+        <%= f.file_field :file %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :file_name, class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :file_name %> 省略可：省略するとアップロードされたファイルの名前をそのまま使用します。
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit '登録', class: 'btn btn-primary', data: { disable_with: '送信中...' } %>
+    </div>
+  </fieldset>
+<% end %>

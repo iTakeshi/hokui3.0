@@ -1,0 +1,14 @@
+<h1>教科情報データベース</h1>
+
+<ul>
+  <% @semesters.each do |semester| %>
+    <li>
+      <h2><%= semester.identifier_to_str %></h2>
+      <ul>
+        <% semester.subjects.each do |subject| %>
+          <li><%= link_to subject.title_ja, study_subject_path(subject) %></li>
+        <% end %>
+      </ul>
+    </li>
+  <% end %>
+</ul>
