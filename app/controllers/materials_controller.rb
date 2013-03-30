@@ -29,7 +29,12 @@ class MaterialsController < ApplicationController
 
     if @material.save
       @material.save_file(file_params[:file])
-      redirect_to exams_study_subject_materials_path(@subject)
+      case @material.material_type
+      when 'exam'
+        redirect_to exams_study_subject_materials_path(@subject)
+      when 'quiz'
+        redirect_to quizzes_study_subject_materials_path(@subject)
+      end
     else
       render action: :new
     end
