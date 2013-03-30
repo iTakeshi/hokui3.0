@@ -16,7 +16,7 @@
       <td><%= material.user.handle_name %><br><%= material.download_count %> 回</td>
       <td>
         <%= link_to '修正', edit_study_subject_material_path(@subject, material), class: 'btn btn-mini btn-info' %><br>
-        <%= link_to '削除', study_subject_material_path(@subject, material), method: :delete, class: 'btn btn-mini btn-danger' %>
+        <%= link_to '削除', study_subject_material_path(@subject, material), method: :delete, class: 'btn btn-mini btn-danger', data: { confirm: "#{material.display_name} を削除します。本当によろしいですか？" } %>
       </td>
     </tr>
   <% end %>
