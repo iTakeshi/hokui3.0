@@ -4,8 +4,9 @@ class Material < ActiveRecord::Base
 
   validates_inclusion_of :material_type, in: %w(exam quiz note personal_file)
 
-  scope :exams,   -> { where(material_type: :exam) }
-  scope :quizzes, -> { where(material_type: :quiz) }
+  scope :exams,   -> { where(material_type: 'exam') }
+  scope :quizzes, -> { where(material_type: 'quiz') }
+  scope :notes,   -> { where(material_type: 'note') }
 
   def set_page
     last_page = Material.where(file_name: self.file_name).pluck(:page).max

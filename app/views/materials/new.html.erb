@@ -35,12 +35,14 @@
       </div>
     </div>
 
-    <div class="control-group">
-      <%= f.label :with_answer, class: 'control-label' %>
-      <div class="controls">
-        <%= f.check_box :with_answer %>
+    <% if %w(exam quiz).include? @material.material_type %>
+      <div class="control-group">
+        <%= f.label :with_answer, class: 'control-label' %>
+        <div class="controls">
+          <%= f.check_box :with_answer %>
+        </div>
       </div>
-    </div>
+    <% end %>
 
     <div class="control-group">
       <%= f.label :comments, class: 'control-label' %>

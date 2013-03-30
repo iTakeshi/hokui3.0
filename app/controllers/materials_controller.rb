@@ -17,6 +17,10 @@ class MaterialsController < ApplicationController
     @quizzes = Material.quizzes
   end
 
+  def notes
+    @notes = Material.notes
+  end
+
   def new
     @material = @subject.materials.new(material_type: params[:type])
   end
@@ -34,6 +38,8 @@ class MaterialsController < ApplicationController
         redirect_to exams_study_subject_materials_path(@subject)
       when 'quiz'
         redirect_to quizzes_study_subject_materials_path(@subject)
+      when 'note'
+        redirect_to notes_study_subject_materials_path(@subject)
       end
     else
       render action: :new
@@ -56,6 +62,8 @@ class MaterialsController < ApplicationController
       redirect_to exams_study_subject_materials_path(@subject)
     when 'quiz'
       redirect_to quizzes_study_subject_materials_path(@subject)
+    when 'note'
+      redirect_to notes_study_subject_materials_path(@subject)
     end
   end
 
