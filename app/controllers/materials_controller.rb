@@ -78,7 +78,16 @@ class MaterialsController < ApplicationController
   def destroy
     @material.destroy_file
     @material.destroy!
-    redirect_to exams_study_subject_materials_path(@subject)
+    case @material.material_type
+    when 'exam'
+      redirect_to exams_study_subject_materials_path(@subject)
+    when 'quiz'
+      redirect_to quizzes_study_subject_materials_path(@subject)
+    when 'note'
+      redirect_to notes_study_subject_materials_path(@subject)
+    when 'personal_file'
+      redirect_to personal_files_study_subject_materials_path(@subject)
+    end
   end
 
   private
