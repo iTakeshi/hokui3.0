@@ -47,6 +47,19 @@ class Material < ActiveRecord::Base
     Rails.root.join('public', 'uploads', self.internal_file_name)
   end
 
+  def material_type_to_str
+    case self.material_type
+    when 'exam'
+      return '過去問'
+    when 'quiz'
+      return '小テスト'
+    when 'note'
+      return '講義資料'
+    when 'personal_file'
+      return '個人作成資料'
+    end
+  end
+
   def number_to_str
     return self.number unless self.material_type == 'exam'
     case self.number
