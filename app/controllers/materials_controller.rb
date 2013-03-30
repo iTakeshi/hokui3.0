@@ -13,6 +13,10 @@ class MaterialsController < ApplicationController
     @exams = Material.exams
   end
 
+  def quizzes
+    @quizzes = Material.quizzes
+  end
+
   def new
     @material = @subject.materials.new(material_type: params[:type])
   end
