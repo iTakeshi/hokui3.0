@@ -21,32 +21,34 @@
   <fieldset>
     <%= f.hidden_field :material_type %>
 
-    <div class="control-group">
-      <%= f.label :class_year, class: 'control-label' %>
-      <div class="controls">
-        <%= f.text_field :class_year, disabled: true %> 編集不可
-      </div>
-    </div>
-
-    <div class="control-group">
-      <%= f.label :number, class: 'control-label' %>
-      <div class="controls">
-        <% if @material.material_type == 'exam' %>
-          <%= f.select :number, options_for_select('中間' => 11, '期末' => 12, '第1回' => 1, '第2回' => 2, '第3回' => 3, '第4回' => 4, '第5回' => 5, '第6回' => 6), { prompt: '選択' }, { disabled: true } %>
-          編集不可
-        <% else %>
-          <%= f.number_field :number, disabled: true %> 編集不可
-        <% end %>
-      </div>
-    </div>
-
-    <% if %w(exam quiz).include? @material.material_type %>
+    <% unless @material.material_type == 'personal_file' %>
       <div class="control-group">
-        <%= f.label :with_answer, class: 'control-label' %>
+        <%= f.label :class_year, class: 'control-label' %>
         <div class="controls">
-          <%= f.check_box :with_answer, disabled: true %> 編集不可
+          <%= f.text_field :class_year, disabled: true %> 編集不可
         </div>
       </div>
+
+      <div class="control-group">
+        <%= f.label :number, class: 'control-label' %>
+        <div class="controls">
+          <% if @material.material_type == 'exam' %>
+            <%= f.select :number, options_for_select('中間' => 11, '期末' => 12, '第1回' => 1, '第2回' => 2, '第3回' => 3, '第4回' => 4, '第5回' => 5, '第6回' => 6), { prompt: '選択' }, { disabled: true } %>
+            編集不可
+          <% else %>
+            <%= f.number_field :number, disabled: true %> 編集不可
+          <% end %>
+        </div>
+      </div>
+
+      <% if %w(exam quiz).include? @material.material_type %>
+        <div class="control-group">
+          <%= f.label :with_answer, class: 'control-label' %>
+          <div class="controls">
+            <%= f.check_box :with_answer, disabled: true %> 編集不可
+          </div>
+        </div>
+      <% end %>
     <% end %>
 
     <div class="control-group">

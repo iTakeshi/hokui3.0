@@ -21,6 +21,10 @@ class MaterialsController < ApplicationController
     @notes = Material.notes
   end
 
+  def personal_files
+    @personal_files = Material.personal_files
+  end
+
   def new
     @material = @subject.materials.new(material_type: params[:type])
   end
@@ -40,6 +44,8 @@ class MaterialsController < ApplicationController
         redirect_to quizzes_study_subject_materials_path(@subject)
       when 'note'
         redirect_to notes_study_subject_materials_path(@subject)
+      when 'personal_file'
+        redirect_to personal_files_study_subject_materials_path(@subject)
       end
     else
       render action: :new
@@ -64,6 +70,8 @@ class MaterialsController < ApplicationController
       redirect_to quizzes_study_subject_materials_path(@subject)
     when 'note'
       redirect_to notes_study_subject_materials_path(@subject)
+    when 'personal_file'
+      redirect_to personal_files_study_subject_materials_path(@subject)
     end
   end
 
