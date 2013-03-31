@@ -37,7 +37,7 @@
   <body>
 
     <div class="navbar navbar-inverse navbar-fixed-top">
-      <div id="banner" class="container">
+      <div class="container" id="banner">
         <%= link_to image_tag('banner.png'), root_path %>
       </div>
 
@@ -50,9 +50,41 @@
           </a>
           <div class="container nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <li class="<%= @is_index_page ? 'active' : '' %>">
+                <%= link_to raw('<i class="icon-home"></i>Home'), '/' %>
+              </li>
+              <li class="<%= @is_study_page ? 'active' : '' %>">
+                <%= link_to raw('<i class="icon-book"></i>Study'), '/study' %>
+              </li>
+              <li class="<%= @is_vocabulary_page ? 'active' : '' %>">
+                <%= link_to raw('<i class="icon-tags"></i>Vocabulary Check'), '/vocabularies' %>
+              </li>
+              <li class="<%= @is_calendar_page ? 'active' : '' %>">
+                <%= link_to raw('<i class="icon-calendar"></i>Calendar'), '/calendar' %>
+              </li>
+              <li class="<%= @is_ml_page ? 'active' : '' %>">
+                <%= link_to raw('<i class="icon-envelope"></i>freeML'), '/freeml' %>
+              </li>
+              <li class="<%= @is_admin_page ? 'active' : '' %>">
+                <%= link_to raw('<i class="icon-wrench"></i>Admin'), '/admin' %>
+              </li>
+            </ul>
+
+            <ul class="nav pull-right">
+              <li class="<%= @is_help_page ? 'active' : '' %>">
+                <%= link_to raw('<i class="icon-question-sign"></i>Help'), '/help' %>
+              </li>
+              <li class="dropdown <%= @user_page ? 'active' : '' %>" id="user-menu">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="icon-user-md"></i>
+                  <%= current_user ? current_user.handle_name : 'guest' %>
+                  <i class="icon-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                  <li><%= link_to 'Profile', '/profile' %></li>
+                  <li><%= link_to 'Log Out', '/logout' %></li>
+                </ul>
+              </li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

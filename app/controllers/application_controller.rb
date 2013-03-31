@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
   before_action :authenticate
   before_action :update_last_login_timestamp
 
+  helper_method :current_user
+
+  private
   def authenticate
     if current_user
       @current_user = current_user
