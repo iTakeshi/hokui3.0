@@ -4,3 +4,35 @@
 .navbar-fixed-top + .container {
   margin-top: 150px;
 }
+
+footer {
+  .span12 {
+    position: relative;
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 15px;
+    border-top: 1px solid #ddd;
+
+    address {
+      margin-top: 5px;
+    }
+
+    #footer-credits {
+      position: absolute;
+      top: 0; right: 0;
+
+      ul {
+        list-style: none;
+
+        li {
+          float: left;
+          margin: 5px;
+        }
+
+        li#footer-credit-rails {
+          margin-top: 7px;
+        }
+      }
+    }
+  }
+}

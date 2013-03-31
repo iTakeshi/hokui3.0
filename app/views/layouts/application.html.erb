@@ -110,8 +110,22 @@
           </div><!--/span-->
         </div><!--/row-->
 
-      <footer>
-        <p>&copy; Company 2013</p>
+      <footer class="row">
+        <div class="span12">
+          <address>
+            Copyright 2011-2013 Hokui-Net Developer Team, Version 3.0.0.pre @2013-04-01
+          </address>
+          <div id="footer-credits">
+            <ul>
+              <li id="footer-credit-octocat">
+                <%= link_to image_tag('octocat.png', alt: 'Find me on Github!'), 'http://github.com/iTakeshi/hokui3.0', target: '_blank', rel: 'tooltip', title: 'Find me on Github!' %>
+              </li>
+              <li id="footer-credit-rails">
+                <%= link_to image_tag('rails.png', alt: 'This application is built on Rails.'), 'http://rubyonrails.org/', target: '_blank', rel: 'tooptip', title: 'This application is built on Rails' %>
+              </li>
+            </ul>
+          </div>
+        </div>
       </footer>
 
     </div> <!-- /container -->
