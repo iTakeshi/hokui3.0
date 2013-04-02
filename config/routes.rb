@@ -44,5 +44,7 @@ HokuiNet::Application.routes.draw do
     root to: 'index#index'
   end
 
+  get '/help' => 'index#help'
+
   root to: 'index#index'
 end

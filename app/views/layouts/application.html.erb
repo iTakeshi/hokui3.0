@@ -58,7 +58,7 @@
 
             <ul class="nav pull-right">
               <li class="<%= @is_help_page ? 'active' : '' %>">
-                <%= link_to raw('<i class="icon-question-sign"></i>Help'), '/help' %>
+                <%= link_to raw('<i class="icon-question-sign"></i>Help'), help_path %>
               </li>
               <li class="dropdown <%= @is_profile_page ? 'active' : '' %>" id="user-menu">
                 <% if current_user %>

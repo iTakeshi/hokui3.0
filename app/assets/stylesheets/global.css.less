@@ -13,3 +13,14 @@ html {
     margin: 0 20px 0 0;
   }
 }
+
+ol.footnote {
+  counter-reset: li;
+  list-style-type: none;
+  margin-left: 0;
+
+  li:before {
+    content: "※" counter(li) ": ";
+    counter-increment: li;
+  }
+}
