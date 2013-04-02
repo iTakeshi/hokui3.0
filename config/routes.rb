@@ -7,7 +7,6 @@ HokuiNet::Application.routes.draw do
   post '/login' => 'sessions#create'
 
   get   '/study' => 'study#index', as: 'study'
-  get   '/study/:subject_title_en' => 'study#subject', as: 'study_subject'
   scope '/study/:subject_title_en' do
     resources :materials, except: %i(index show), as: 'study_subject_materials' do
       member do

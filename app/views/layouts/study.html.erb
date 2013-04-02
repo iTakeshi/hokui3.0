@@ -10,7 +10,7 @@
           <div class="accordion-inner">
             <ul>
               <% s.subjects.each do |subject| %>
-                <li><%= link_to subject.title_ja, study_subject_path(subject) %></li>
+                <li><%= link_to subject.title_ja, exams_study_subject_materials_path(subject) %></li>
               <% end %>
             </ul>
           </div>

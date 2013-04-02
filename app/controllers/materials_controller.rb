@@ -3,6 +3,8 @@ class MaterialsController < ApplicationController
   before_action :set_material, only: %i(edit update destroy)
   before_action :authorize_as_admin_or_file_owner, only: %i(edit update destroy)
 
+  layout 'layouts/study'
+
   def download
     material = Material.find(params[:id])
     material.increment(:download_count).save!
