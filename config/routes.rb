@@ -7,6 +7,8 @@ HokuiNet::Application.routes.draw do
   post   '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
+  resource :profile, only: %i(edit update)
+
   get   '/study' => 'study#index', as: 'study'
   scope '/study/:subject_title_en' do
     resources :materials, except: %i(index show), as: 'study_subject_materials' do
