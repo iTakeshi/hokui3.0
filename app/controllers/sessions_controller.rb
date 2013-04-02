@@ -16,4 +16,9 @@ class SessionsController < ApplicationController
       render action: :new
     end
   end
+
+  def destroy
+    session[:auth_token] = nil
+    redirect_to '/login', notice: 'ログアウトしました。'
+  end
 end
