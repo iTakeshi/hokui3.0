@@ -1,4 +1,4 @@
-class Admin::SubjectsController < ApplicationController
+class Admin::SubjectsController < Admin::ApplicationController
   before_action :set_subject, only: %i(edit update)
 
   def index
