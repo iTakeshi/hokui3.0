@@ -7,8 +7,6 @@
   <li><%= link_to '個人作成資料', personal_files_study_subject_materials_path(@subject) %></li>
 </ul>
 
-<h4>講義資料</h4>
-
 <p>
   <%= link_to '新規アップロード', new_study_subject_material_path(@subject, type: :note) %>
 </p>
@@ -48,3 +46,5 @@
     <% end %>
   <% end %>
 </table>
+
+<% @title = "講義資料 - #{@subject.title_ja}" %>
