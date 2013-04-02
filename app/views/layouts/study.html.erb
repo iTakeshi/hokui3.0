@@ -1,0 +1,29 @@
+<% content_for :side do %>
+
+  <div class="accordion" id="study-submenu">
+    <% current_user.year.semesters.each do |s| %>
+      <div class="accordion-group">
+        <div class="accordion-heading">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#study-submenu" href="#semester-<%= s.identifier %>"><%= s.identifier_to_str %></a>
+        </div>
+        <div class="accordion-body collapse" id="semester-<%= s.identifier %>">
+          <div class="accordion-inner">
+            <ul>
+              <% s.subjects.each do |subject| %>
+                <li><%= link_to subject.title_ja, study_subject_path(subject) %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+<% end %>
+
+<% content_for :content do %>
+  <%= yield %>
+<% end %>
+
+<% @study_page = true %>
+<%= render template: 'layouts/application' %>
