@@ -1,0 +1,25 @@
+<% content_for :side do %>
+
+  <div class="accordion" id="study-submenu">
+    <div class="accordion-group">
+      <div class="accordion-heading">
+        <span class="accordion-toggle">管理メニュー</span>
+      </div>
+      <div class="accordion-inner">
+        <ul>
+          <li><%= link_to 'ユーザー', admin_users_path %></li>
+          <li><%= link_to '期/学期', admin_years_path %></li>
+          <li><%= link_to '教科', admin_subjects_path %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+<% end %>
+
+<% content_for :main do %>
+  <%= yield %>
+<% end %>
+
+<% @is_admin_page = true %>
+<%= render template: 'layouts/application' %>
