@@ -44,6 +44,7 @@ HokuiNet::Application.routes.draw do
     root to: 'index#index'
   end
 
+  get '/calendar' => 'index#calendar'
   get '/help' => 'index#help'
 
   root to: 'index#index'
