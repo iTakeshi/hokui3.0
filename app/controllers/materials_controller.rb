@@ -12,19 +12,19 @@ class MaterialsController < ApplicationController
   end
 
   def exams
-    @exams = Material.exams
+    @exams = Material.exams.where(subject_id: @subject.id)
   end
 
   def quizzes
-    @quizzes = Material.quizzes
+    @quizzes = Material.quizzes.where(subject_id: @subject.id)
   end
 
   def notes
-    @notes = Material.notes
+    @notes = Material.notes.where(subject_id: @subject.id)
   end
 
   def personal_files
-    @personal_files = Material.personal_files
+    @personal_files = Material.personal_files.where(subject_id: @subject.id)
   end
 
   def new
