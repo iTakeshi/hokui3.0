@@ -17,7 +17,7 @@
       <% Material.all.order('updated_at DESC').limit(10).each do |m| %>
         <dt><%= m.updated_at.to_datetime %></dt>
         <dd>
-          <%= m.user.handle_name %>さんが<%= link_to m.subject.title_ja, study_subject_path(m.subject) %>
+          <%= m.user.handle_name %>さんが<%= m.subject.title_ja %>
           <%= m.material_type_to_str %>を<%= m.created_at == m.updated_at ? 'up' : '更新' %> <br>
           <%= link_to m.display_name, download_study_subject_material_path(m.subject, m) %>
         </dd>
