@@ -19,6 +19,7 @@
 # Ignore private files.
 /config/initializers/secret_token.rb
 /config/database.yml
+/config/config.yml
 
 # Ignore uploaded files.
 /public/uploads
