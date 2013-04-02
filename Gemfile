@@ -23,6 +23,10 @@ gem 'twitter-bootstrap-rails'
 
 gem 'i18n_generators'
 
+gem 'mechanize'
+
+gem 'nokogiri'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
 

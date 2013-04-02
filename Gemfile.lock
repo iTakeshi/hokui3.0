@@ -157,6 +157,8 @@ DEPENDENCIES
   i18n_generators
   jquery-rails
   less-rails
+  mechanize
+  nokogiri
   pry-rails
   rails (= 4.0.0.beta1)
   sqlite3
