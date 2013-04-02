@@ -9,4 +9,8 @@ class Year < ActiveRecord::Base
   def to_param
     class_year
   end
+
+  def freeml_url
+    "http://www.freeml.com/#{self.freeml_account}/topics"
+  end
 end

@@ -4,11 +4,8 @@
   <%= link_to '新規登録', new_admin_year_path %>
 </p>
 
-<p>
-  リンク先でカリキュラムを編集できます。
-</p>
 <ul>
   <% @years.each do |year| %>
-    <li><%= link_to "#{year.class_year}期", admin_year_semesters_path(year) %></li>
+    <li><%= year.class_year %>期: <%= link_to 'freeml設定', edit_admin_year_path(year) %> <%= link_to "教科を編集", admin_year_semesters_path(year) %></li>
   <% end %>
 </ul>
