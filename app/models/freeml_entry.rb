@@ -20,4 +20,12 @@ class FreemlEntry < ActiveRecord::Base
       agent
     end
   end
+
+  def body_to_html
+    self.body.gsub("\n", "<br>").html_safe
+  end
+
+  def to_param
+    self.freeml_id
+  end
 end

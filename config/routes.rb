@@ -45,6 +45,7 @@ HokuiNet::Application.routes.draw do
   end
 
   get '/freeml' => 'freeml#index'
+  get '/freeml/:class_year/:freeml_id/download' => 'freeml#download', as: 'freeml_download'
 
   get '/calendar' => 'index#calendar'
   get '/help' => 'index#help'

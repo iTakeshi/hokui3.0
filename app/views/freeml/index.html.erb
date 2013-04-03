@@ -4,7 +4,7 @@
 </p>
 <p>
   <strong>おことわり</strong>
-  freeMLの仕様のため、メールアドレスが含まれるメールの本文を正常に表示できない場合があります。(修正予定です)
+  freeMLの仕様のため、メールアドレスが含まれるメールの本文を正常に表示できない場合があります。(回避方法を模索中です)
 </p>
 
 <table class="table">
@@ -14,6 +14,7 @@
     <th>日時</th>
     <th>件名</th>
     <th>本文</th>
+    <th></th>
   </tr>
   <% @entries.each do |entry| %>
     <tr>
@@ -22,9 +23,40 @@
       <td><%= entry.sent_at %></td>
       <td><%= entry.title %></td>
       <td><%= truncate(entry.body) %></td>
+      <td><button type="button" class="btn btn-mini download-freeml-body" data-download-body-path="<%= freeml_download_path(entry.year, entry) %>">全文</button></td>
     </tr>
   <% end %>
 </table>
 
 <% @is_freeml_page = true %>
 <% @title = 'freeML' %>
+
+<div id="freeml-modal" class="modal hide fade" tabindex="-1">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+    <h3 id="freeml-modal-title"></h3>
+  </div>
+  <div class="modal-body">
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal">Close</button>
+  </div>
+</div>
+
+<script>
+  $('.download-freeml-body').click(function(){
+    $.ajax({
+      url: $(this).attr('data-download-body-path'),
+      type: 'GET',
+      scriptCharset: 'utf-8',
+      dataType: 'json',
+      success: function(res){
+        $modal = $('#freeml-modal');
+        $modal.find('#freeml-modal-title').text(res.title);
+        $modal.find('.modal-body').html(res.body);
+        $modal.modal('show');
+      },
+      error: function(){ console.log('transmission error'); }
+    });
+  });
+</script>
