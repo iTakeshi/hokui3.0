@@ -1,6 +1,12 @@
 <h1>学期に教科を登録</h1>
 
-<%= form_for @semester, url: admin_year_semester_path(@year, @semester), class: 'form-horizontal' do |f| %>
+<p>
+  <strong>注意</strong><br>
+  再編集時、それまでの値が反映されません。(修正予定です)<br>
+  以前にチェックされていたものも含め、すべての教科をチェックしてください。
+</p>
+
+<%= form_for @semester, url: admin_year_semester_path(@year, @semester), html: { class: 'form-horizontal' } do |f| %>
   <fieldset>
     <div class="control-group">
       <%= label_tag :subjects, '教科', class: 'control-label' %>
