@@ -1,7 +1,7 @@
 <% content_for :side do %>
 
   <div class="accordion" id="study-submenu">
-    <% current_user.year.semesters.each do |s| %>
+    <% @current_user.year.semesters.each do |s| %>
       <div class="accordion-group">
         <div class="accordion-heading">
           <a class="accordion-toggle" data-toggle="collapse" data-parent="#study-submenu" href="#semester-<%= s.identifier %>"><%= s.identifier_to_str %></a>

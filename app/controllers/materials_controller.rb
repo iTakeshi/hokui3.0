@@ -33,7 +33,7 @@ class MaterialsController < ApplicationController
 
   def create
     @material = @subject.materials.new(material_params)
-    @material.user = current_user
+    @material.user = @current_user
     @material.set_file_params(file_params)
     @material.set_page
 
@@ -94,7 +94,7 @@ class MaterialsController < ApplicationController
 
   private
   def authorize_as_admin_or_file_owner
-    unless current_user.is_admin or current_user == @material.user
+    unless @current_user.is_admin or @current_user == @material.user
       flash[:error] = "あなたはこのファイルを編集または削除する権限がありません。"
       redirect_to exams_study_subject_materials_path(@subject)
     end
