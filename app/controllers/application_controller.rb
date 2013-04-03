@@ -21,7 +21,24 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    User.where(auth_token: session[:auth_token]).first
+    user = User.find_by(auth_token: session[:auth_token])
+    if user
+      if user.status == 0
+        user
+      else
+        flash[:error] = case user.status
+          when 1
+            'メールアドレスの確認が完了していません。ELMSメールの受信ボックスを確認してください。'
+          when 2
+            '管理者の承認が完了していません。承認されると、ELMSメールに通知されます。しばらくお待ちください。'
+          else
+            nil
+          end
+        nil
+      end
+    else
+      nil
+    end
   end
 
   def update_last_login_timestamp
