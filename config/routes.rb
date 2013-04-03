@@ -1,4 +1,5 @@
 HokuiNet::Application.routes.draw do
+  get "password_reset/new"
   get  '/signup' => 'signup#new'
   post '/signup' => 'signup#create'
   get  '/signup/confirm/:secret_token' => 'signup#confirm', as: 'confirm_signup'
