@@ -1,5 +1,11 @@
 class IndexController < ApplicationController
   def index
+    current_semester = @current_user.year.current_semester
+    if current_semester
+      @new_materials = Material.where(subject_id: current_semester.subjects).order('updated_at DESC').limit(10)
+    else
+      @new_materials = Material.all.order('updated_at DESC').limit(10)
+    end
   end
 
   def calendar

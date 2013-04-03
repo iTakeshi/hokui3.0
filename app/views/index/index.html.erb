@@ -14,7 +14,7 @@
   <div class="span6">
     <h2><%= link_to image_tag('study.gif', style: 'margin-right: 15px;') + "Study", study_path, style: 'color: #333;' %></h2>
     <dl>
-      <% Material.all.order('updated_at DESC').limit(10).each do |m| %>
+      <% @new_materials.each do |m| %>
         <dt><%= m.updated_at.to_datetime %></dt>
         <dd>
           <%= m.user.handle_name %>さんが<%= m.subject.title_ja %>
