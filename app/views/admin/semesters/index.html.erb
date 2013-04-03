@@ -15,7 +15,7 @@
   </tr>
   <% @year_semesters.each do |semester| %>
     <tr>
-      <td><%= semester.identifier_to_str %></td>
+      <td style="min-width: 60px;"><%= semester.identifier_to_str %></td>
       <td>
         <ul class="ul-inline">
           <% semester.subjects.each do |subject| %>
@@ -23,7 +23,7 @@
           <% end %>
         </ul>
       </td>
-      <td><%= link_to '編集', edit_admin_year_semester_path(@year, semester) %></td>
+      <td style="min-width: 40px;"><%= link_to '編集', edit_admin_year_semester_path(@year, semester) %></td>
     </tr>
   <% end %>
 </table>
