@@ -26,7 +26,16 @@
   </div>
 
   <div class="span6">
-    <iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showNav=1&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK&amp;height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=hokui93.net%40gmail.com&amp;color=%23B1440E&amp;ctz=Asia%2FTokyo" style=" border-width:0 " width="570" height="400" frameborder="0" scrolling="no"></iframe>
+    <iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showNav=1&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=WEEK&amp;height=400&amp;wkst=1&amp;bgcolor=%23FFFFFF&amp;src=hokui93.net%40gmail.com&amp;color=%23B1440E&amp;ctz=Asia%2FTokyo" style=" border-width:0 " width="570" height="435" frameborder="0" scrolling="no"></iframe>
+    <h2><%= link_to 'freeML', freeml_path, style: 'color: #333;' %></h2>
+    <dl>
+      <% @freeml_entries.each do |entry| %>
+        <dt><%= entry.sent_at %></dt>
+        <dd>
+          <%= entry.sender_name %>さんが新しいメールを投稿<br>
+          title: <%= entry.title %>
+        </dd>
+      <% end %>
   </div>
 
 </div>
