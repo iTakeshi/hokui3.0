@@ -28,6 +28,7 @@
     <div class="form-actions">
       <p><%= submit_tag 'GO!', class: 'btn btn-primary', data: { disable_with: '送信中...' } %></p>
       <p>初めての方へ： 北医ネットを利用するには<%= link_to 'ユーザー登録', signup_path %>が必要です。</p>
+      <p>パスワードを忘れてしまった場合 &raquo; <%= link_to 'パスワードを再設定します', reset_password_path %></p>
     </div>
   </fieldset>
 <% end %>

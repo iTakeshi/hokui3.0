@@ -1,2 +1,21 @@
-<h1>PasswordReset#new</h1>
-<p>Find me in app/views/password_reset/new.html.erb</p>
+<h1>パスワード再設定</h1>
+
+<p>
+  詳細を記したメールを送信します。<br>
+  登録されている<strong>ELMSメールアドレス</strong>を入力してください。
+</p>
+
+<%= form_tag reset_password_path, class: 'form-horizontal' do %>
+  <fieldset>
+    <div class="control-group">
+      <%= label_tag :email_official, 'ELMSメール', class: 'control-label' %>
+      <div class="controls">
+        <%= email_field_tag :email_official %>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= submit_tag '送信', class: 'btn btn-primary', disable_with: '送信中...' %>
+    </div>
+  </fieldset>
+<% end %>

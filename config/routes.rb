@@ -1,5 +1,4 @@
 HokuiNet::Application.routes.draw do
-  get "password_reset/new"
   get  '/signup' => 'signup#new'
   post '/signup' => 'signup#create'
   get  '/signup/confirm/:secret_token' => 'signup#confirm', as: 'confirm_signup'
@@ -14,6 +13,11 @@ HokuiNet::Application.routes.draw do
       post 'update_password'
     end
   end
+
+  get  '/reset_password' => 'password_reset#new'
+  post '/reset_password' => 'password_reset#create'
+  get  '/set_new_password/:secret_token' => 'password_reset#set_password', as: 'set_new_password'
+  post '/set_new_password/:secret_token' => 'password_reset#update_password'
 
   get   '/study' => 'study#index', as: 'study'
   scope '/study/:subject_title_en' do

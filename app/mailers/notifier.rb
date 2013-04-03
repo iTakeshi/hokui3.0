@@ -30,4 +30,9 @@ class Notifier < ActionMailer::Base
     @user = user
     mail to: user.email_official, subject: '北医ネット：一般ユーザーへ降格しました'
   end
+
+  def password_reset(user)
+    @user = user
+    mail to: user.email_official, subject: '北医ネット：パスワード再設定'
+  end
 end

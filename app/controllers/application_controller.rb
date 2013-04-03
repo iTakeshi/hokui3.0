@@ -31,6 +31,8 @@ class ApplicationController < ActionController::Base
             'メールアドレスの確認が完了していません。ELMSメールの受信ボックスを確認してください。'
           when 2
             '管理者の承認が完了していません。承認されると、ELMSメールに通知されます。しばらくお待ちください。'
+          when 3
+            'パスワード再設定の手続き中です。完了するまではログインできません。ELMSメールの受信ボックスを確認してください。'
           else
             nil
           end
