@@ -93,8 +93,10 @@
             <%= yield :main %>
           </div>
 
-          <div class="span3 pull-left">
-            <%= yield :side  %>
+          <div class="span3 pull-left" id="sidebar">
+            <div id="sidenav">
+              <%= yield :side  %>
+            </div>
           </div>
 
         <% else %>

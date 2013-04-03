@@ -14,3 +14,10 @@ $ ->
   # TODO this code can't process direct accesses with anchor from other page
   shiftWindow = -> scrollBy(0, -50)
   window.addEventListener("hashchange", shiftWindow)
+
+  $('#sidenav').affix {
+    offset: {
+      top: 90,
+      bottom: 91
+    }
+  }
