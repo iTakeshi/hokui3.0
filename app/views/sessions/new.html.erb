@@ -18,6 +18,13 @@
       </div>
     </div>
 
+    <div class="control-group">
+      <%= label_tag :remember_me, 'ログイン状態を保存', class: 'control-label' %>
+      <div class="controls">
+        <%= check_box_tag :remember_me %>
+      </div>
+    </div>
+
     <div class="form-actions">
       <p><%= submit_tag 'GO!', class: 'btn btn-primary', data: { disable_with: '送信中...' } %></p>
       <p>初めての方へ： 北医ネットを利用するには<%= link_to 'ユーザー登録', signup_path %>が必要です。</p>

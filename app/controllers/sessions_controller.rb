@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:auth_token] = user.auth_token
+      cookies.permanent[:remember_me] = params[:remember_me]
       redirect_to root_path
     else
       flash[:error] = "ELMSメール、またはパスワードが間違っています。もう一度お試しください。初めての方は新規登録をおねがいします。"

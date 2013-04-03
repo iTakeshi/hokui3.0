@@ -12,6 +12,9 @@ class ApplicationController < ActionController::Base
   def authenticate
     if current_user
       @current_user = current_user
+      if cookies[:remember_me] == "1"
+        request.session_options[:expire_after] = 60 * 60 * 24 * 14
+      end
     else
       redirect_to login_path
     end
