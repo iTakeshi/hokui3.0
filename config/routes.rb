@@ -7,7 +7,12 @@ HokuiNet::Application.routes.draw do
   post   '/login' => 'sessions#create'
   delete '/logout' => 'sessions#destroy'
 
-  resource :profile, only: %i(edit update)
+  resource :profile, only: %i(edit update) do
+    collection do
+      get  'password'
+      post 'update_password'
+    end
+  end
 
   get   '/study' => 'study#index', as: 'study'
   scope '/study/:subject_title_en' do
