@@ -52,3 +52,12 @@ ja:
         subject: :activerecord.models.subject
         user: :activerecord.models.user
         with_answer: 解答付き
+
+
+  views:
+    pagination:
+      first: "&laquo;"
+      previous: "&lsaquo;"
+      next: "&rsaquo;"
+      last: "&raquo;"
+      truncate: ...

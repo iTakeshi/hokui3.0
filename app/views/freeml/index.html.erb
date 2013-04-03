@@ -7,6 +7,8 @@
   freeMLの仕様のため、メールアドレスが含まれるメールの本文を正常に表示できない場合があります。(回避方法を模索中です)
 </p>
 
+<%= paginate @entries %>
+
 <table class="table">
   <tr>
     <th>投稿ID</th>
@@ -27,6 +29,8 @@
     </tr>
   <% end %>
 </table>
+
+<%= paginate @entries %>
 
 <% @is_freeml_page = true %>
 <% @title = 'freeML' %>
