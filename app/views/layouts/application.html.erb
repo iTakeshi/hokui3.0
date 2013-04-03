@@ -38,10 +38,10 @@
           <div class="container nav-collapse">
             <ul class="nav">
               <li class="<%= @is_index_page ? 'active' : '' %>">
-                <%= link_to raw('<i class="icon-home"></i>Home'), '/' %>
+                <%= link_to raw('<i class="icon-home"></i>Home'), root_path %>
               </li>
               <li class="<%= @is_study_page ? 'active' : '' %>">
-                <%= link_to raw('<i class="icon-book"></i>Study'), '/study' %>
+                <%= link_to raw('<i class="icon-book"></i>Study'), study_path %>
               </li>
               <li class="<%= @is_vocabulary_page ? 'active' : '' %>">
                 <%= link_to raw('<i class="icon-tags"></i>Vocabulary Check'), '/vocabularies' %>
@@ -53,7 +53,7 @@
                 <%= link_to raw('<i class="icon-envelope"></i>freeML'), freeml_path %>
               </li>
               <li class="<%= @is_admin_page ? 'active' : '' %>">
-                <%= link_to raw('<i class="icon-wrench"></i>Admin'), '/admin' %>
+                <%= link_to raw('<i class="icon-wrench"></i>Admin'), admin_root_path %>
               </li>
             </ul>
 

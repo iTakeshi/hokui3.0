@@ -2,7 +2,7 @@
 
 <p>利用するためには、ログインする必要があります。</p>
 
-<%= form_tag '/login', class: 'form-horizontal' do %>
+<%= form_tag login_path, class: 'form-horizontal' do %>
   <fieldset>
     <div class="control-group">
       <%= label_tag :email_official, 'ELMSメール', class: 'control-label' %>
