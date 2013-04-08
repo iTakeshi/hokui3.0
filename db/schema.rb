@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130408122856) do
+ActiveRecord::Schema.define(version: 20130408123728) do
 
   create_table "freeml_entries", force: true do |t|
     t.integer  "year_id"
@@ -120,10 +120,9 @@ ActiveRecord::Schema.define(version: 20130408122856) do
   add_index "users", ["handle_name"], name: "index_users_on_handle_name", unique: true
 
   create_table "years", force: true do |t|
-    t.integer  "class_year",     null: false
+    t.integer  "class_year", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "freeml_account"
   end
 
   add_index "years", ["class_year"], name: "index_years_on_class_year", unique: true
