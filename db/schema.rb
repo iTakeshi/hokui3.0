@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130402062753) do
+ActiveRecord::Schema.define(version: 20130408122416) do
 
   create_table "freeml_entries", force: true do |t|
     t.integer  "year_id"
@@ -44,6 +44,16 @@ ActiveRecord::Schema.define(version: 20130402062753) do
 
   add_index "materials", ["subject_id"], name: "index_materials_on_subject_id"
   add_index "materials", ["user_id"], name: "index_materials_on_user_id"
+
+  create_table "ml_accounts", force: true do |t|
+    t.integer  "year_id",        null: false
+    t.string   "email",          null: false
+    t.string   "subject_prefix"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ml_accounts", ["year_id"], name: "index_ml_accounts_on_year_id"
 
   create_table "semesters", force: true do |t|
     t.integer  "year_id",    null: false
