@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130408122416) do
+ActiveRecord::Schema.define(version: 20130408122856) do
 
   create_table "freeml_entries", force: true do |t|
     t.integer  "year_id"
@@ -54,6 +54,20 @@ ActiveRecord::Schema.define(version: 20130408122416) do
   end
 
   add_index "ml_accounts", ["year_id"], name: "index_ml_accounts_on_year_id"
+
+  create_table "ml_archives", force: true do |t|
+    t.integer  "ml_account_id",  null: false
+    t.string   "from",           null: false
+    t.string   "from_name"
+    t.datetime "sent_at",        null: false
+    t.string   "subject",        null: false
+    t.integer  "archive_number"
+    t.text     "body",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ml_archives", ["ml_account_id"], name: "index_ml_archives_on_ml_account_id"
 
   create_table "semesters", force: true do |t|
     t.integer  "year_id",    null: false
