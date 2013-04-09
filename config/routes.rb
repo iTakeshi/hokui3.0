@@ -1,5 +1,4 @@
 HokuiNet::Application.routes.draw do
-  get "ml_accounts/new"
   get  '/signup' => 'signup#new'
   post '/signup' => 'signup#create'
   get  '/signup/confirm/:secret_token' => 'signup#confirm', as: 'confirm_signup'
@@ -50,6 +49,7 @@ HokuiNet::Application.routes.draw do
 
     resources :years, only: %i(index new create edit update) do
       resources :semesters, only: %i(index new create edit update)
+      resource :ml_account, only: %i(new create edit update)
     end
 
     root to: 'index#index'
