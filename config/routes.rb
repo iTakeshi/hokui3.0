@@ -1,5 +1,4 @@
 HokuiNet::Application.routes.draw do
-  get "ml/index"
   get  '/signup' => 'signup#new'
   post '/signup' => 'signup#create'
   get  '/signup/confirm/:secret_token' => 'signup#confirm', as: 'confirm_signup'
@@ -56,10 +55,8 @@ HokuiNet::Application.routes.draw do
     root to: 'index#index'
   end
 
-  get '/freeml' => 'freeml#index'
-  get '/freeml/:class_year/:freeml_id/download' => 'freeml#download', as: 'freeml_download'
-
   get '/ml' => 'ml#index'
+  get '/ml/:id/download' => 'ml#download', as: 'ml_download'
 
   get '/calendar' => 'index#calendar'
   get '/help' => 'index#help'
