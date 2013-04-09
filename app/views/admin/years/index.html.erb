@@ -6,6 +6,6 @@
 
 <ul>
   <% @years.each do |year| %>
-    <li><%= year.class_year %>期: <%= link_to 'freeml設定', edit_admin_year_path(year) %> <%= link_to "教科を編集", admin_year_semesters_path(year) %></li>
+    <li><%= year.class_year %>期: <%= link_to 'メーリングリスト設定', year.ml_account ? edit_admin_year_ml_account_path(year) : new_admin_year_ml_account_path(year) %>, <%= link_to "教科を編集", admin_year_semesters_path(year) %></li>
   <% end %>
 </ul>

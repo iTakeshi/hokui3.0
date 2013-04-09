@@ -1,0 +1,49 @@
+<%= form_for @ml_account, url: admin_year_ml_account_path(@year), html: { class: "form-horizontal" } do |f| %>
+  <fieldset>
+    <div class="control-group">
+      <%= f.label :email, 'アドレス', class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :email %>
+        例: hokudaimedicine@freeml.com, hokudaimedicine@googlegroups.com
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :subject_prefix, '件名のプレフィックス', class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :subject_prefix %>
+        <div>
+          <p>
+            freemlやgoogle groups, yahooグループなどのメーリングリストサービスでは、件名に自動連番のプレフィックスをつけることができます。
+            この設定項目を追加することにより、メーリングリストサービスによって付加されたプレフィックスを自動で判別し、より適切な表示を得ることができます。<br>
+            <strong>空白や記号（[、]、コロンなど）も、全角・半角も含めてすべてそのとおりに入力する必要があります。（実際に送信されたメールにからコピー&ペーストすることを推奨します。）</strong><br>
+            <strong>連番の場所には、%dと入力してください。</strong>
+          </p>
+          例:
+          <ul>
+            <li>freemlの場合:
+              <dl class="dl-horizontal">
+                <dt>実際のメール例</dt>
+                <dd>[hokudaimedicine:0001] 件名</dd>
+                <dt>この欄への入力</dt>
+                <dd>[hokudaimedicine:%d]</dt>
+              </dl>
+            </li>
+            <li>google groupsの場合:
+              <dl class="dl-horizontal">
+                <dt>実際のメール例</dt>
+                <dd>[hokudai medicine 1] 件名</dd>
+                <dt>この欄への入力</dt>
+                <dd>[hokudai medicine %d]</dt>
+              </dl>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit '登録', class: 'btn btn-primary', data: { disable_with: '送信中...' } %>
+    </div>
+  </fieldset>
+<% end %>

@@ -11,20 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130402062753) do
-
-  create_table "freeml_entries", force: true do |t|
-    t.integer  "year_id"
-    t.integer  "freeml_id"
-    t.string   "sender_name"
-    t.string   "title"
-    t.text     "body"
-    t.datetime "sent_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "freeml_entries", ["year_id"], name: "index_freeml_entries_on_year_id"
+ActiveRecord::Schema.define(version: 20130408123855) do
 
   create_table "materials", force: true do |t|
     t.integer  "subject_id",                         null: false
@@ -44,6 +31,30 @@ ActiveRecord::Schema.define(version: 20130402062753) do
 
   add_index "materials", ["subject_id"], name: "index_materials_on_subject_id"
   add_index "materials", ["user_id"], name: "index_materials_on_user_id"
+
+  create_table "ml_accounts", force: true do |t|
+    t.integer  "year_id",        null: false
+    t.string   "email",          null: false
+    t.string   "subject_prefix"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ml_accounts", ["year_id"], name: "index_ml_accounts_on_year_id"
+
+  create_table "ml_archives", force: true do |t|
+    t.integer  "ml_account_id",  null: false
+    t.string   "from",           null: false
+    t.string   "from_name"
+    t.datetime "sent_at",        null: false
+    t.string   "subject",        null: false
+    t.integer  "archive_number"
+    t.text     "body",           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ml_archives", ["ml_account_id"], name: "index_ml_archives_on_ml_account_id"
 
   create_table "semesters", force: true do |t|
     t.integer  "year_id",    null: false
@@ -96,10 +107,9 @@ ActiveRecord::Schema.define(version: 20130402062753) do
   add_index "users", ["handle_name"], name: "index_users_on_handle_name", unique: true
 
   create_table "years", force: true do |t|
-    t.integer  "class_year",     null: false
+    t.integer  "class_year", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "freeml_account"
   end
 
   add_index "years", ["class_year"], name: "index_years_on_class_year", unique: true

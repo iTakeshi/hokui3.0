@@ -49,13 +49,14 @@ HokuiNet::Application.routes.draw do
 
     resources :years, only: %i(index new create edit update) do
       resources :semesters, only: %i(index new create edit update)
+      resource :ml_account, only: %i(new create edit update)
     end
 
     root to: 'index#index'
   end
 
-  get '/freeml' => 'freeml#index'
-  get '/freeml/:class_year/:freeml_id/download' => 'freeml#download', as: 'freeml_download'
+  get '/ml' => 'ml#index'
+  get '/ml/:id/download' => 'ml#download', as: 'ml_download'
 
   get '/calendar' => 'index#calendar'
   get '/help' => 'index#help'
