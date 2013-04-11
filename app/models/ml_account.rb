@@ -15,8 +15,6 @@ class MlAccount < ActiveRecord::Base
       mails = gmail.label(label).emails(:unread, { to: self.email }).map { |email| Mail.new(email.raw_source) }
 
       mails.sort {|a, b| a.subject <=> b.subject}.each do |mail|
-      binding.pry
-      mail.subject
         if self.subject_prefix
           next if mail.subject !~ %r(#{self.subject_prefix_to_regexp})
         end
