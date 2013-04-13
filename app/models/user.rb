@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   validates_presence_of :birthday
   validates_presence_of :email_official
   validates_uniqueness_of :email_official
-  validates_format_of :email_official, with: /\A[0-9a-zA-Z_]+@[a-z]+\.hokudai\.ac\.jp\Z/
+  validates_format_of :email_official, with: /\A[0-9a-zA-Z_\-]+@[a-z]+\.hokudai\.ac\.jp\Z/
   validates_presence_of :year_id
 
   scope :admins, -> { where(is_admin: true) }
