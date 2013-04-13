@@ -37,6 +37,6 @@ class Admin::SubjectsController < Admin::ApplicationController
   end
 
   def set_subject
-    @subject = Subject.where(id: params[:id]).first
+    @subject = Subject.where(title_en: params[:id]).first
   end
 end
