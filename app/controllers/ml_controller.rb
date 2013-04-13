@@ -4,7 +4,7 @@ class MlController < ApplicationController
       @ml_archives = @current_user.year.ml_account.ml_archives.order('sent_at DESC').page(params[:page])
     else
       flash[:alert] = "#{@current_user.year.class_year}期のメーリングリストが登録されていません。管理者へご連絡ください。"
-      @ml_archives = []
+      @ml_archives = MlArchive.none
     end
   end
 
