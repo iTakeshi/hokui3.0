@@ -20,10 +20,15 @@ class SignupController < ApplicationController
     @user = User.where(secret_token: params[:secret_token]).first
 
     if @user && @user.valid_secret_token?
-      @user.status = 2
-      @user.save!
-      User.admins.each do |admin|
-        Notifier.request_for_approval(admin, @user).deliver
+      if @user.status == 1
+        @user.status = 2
+        @user.save!
+        User.admins.each do |admin|
+          Notifier.request_for_approval(admin, @user).deliver
+        end
+      else
+        flash[:error] = "このメールアドレスはすでに確認済みです。管理者の承認をお待ちください。"
+        redirect_to login_path
       end
     else
       flash[:error] = "認証URLが間違っているか、または認証URLの有効期限を過ぎています。もう一度登録画面からやり直してください。"
