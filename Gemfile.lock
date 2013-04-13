@@ -113,6 +113,7 @@ GEM
     mime-types (1.21)
     minitest (4.7.0)
     multi_json (1.7.2)
+    mysql2 (0.3.11)
     net-http-digest_auth (1.2.1)
     net-http-persistent (2.8)
     net-scp (1.1.0)
@@ -203,6 +204,7 @@ DEPENDENCIES
   less-rails
   mail!
   mechanize
+  mysql2
   nokogiri
   pry-rails
   rails (= 4.0.0.beta1)
