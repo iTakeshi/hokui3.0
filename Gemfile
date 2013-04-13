@@ -29,10 +29,6 @@ gem 'twitter-bootstrap-rails'
 
 gem 'i18n_generators'
 
-gem 'mechanize'
-
-gem 'nokogiri'
-
 gem 'kaminari'
 
 gem 'gmail'

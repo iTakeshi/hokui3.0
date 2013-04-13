@@ -203,9 +203,7 @@ DEPENDENCIES
   kaminari
   less-rails
   mail!
-  mechanize
   mysql2
-  nokogiri
   pry-rails
   rails (= 4.0.0.beta1)
   sqlite3
