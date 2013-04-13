@@ -6,7 +6,11 @@ class IndexController < ApplicationController
     else
       @new_materials = Material.all.order('updated_at DESC').limit(10)
     end
-    @ml_archives = @current_user.year.ml_account.ml_archives.order('sent_at DESC').limit(3)
+    if @current_user.year.ml_account
+      @ml_archives = @current_user.year.ml_account.ml_archives.order('sent_at DESC').limit(3)
+    else
+      @ml_archives = []
+    end
   end
 
   def calendar
