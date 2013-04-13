@@ -18,3 +18,10 @@
 # end
 
 # Learn more: http://github.com/javan/whenever
+
+set :output, "#{Whenever.path}/log/cron.log"
+env :PATH, '/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin'
+
+every 10.minute do
+  runner "MlAccount.fetch_all"
+end

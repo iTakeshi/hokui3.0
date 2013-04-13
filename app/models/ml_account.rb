@@ -2,8 +2,10 @@ class MlAccount < ActiveRecord::Base
   has_many :ml_archives
   belongs_to :year
 
-  def subject_prefix_to_regexp
-    self.subject_prefix.sub('%d', '\d+')
+  def self.fetch_all
+    MlAccount.all.each do |a|
+      a.fetch
+    end
   end
 
   def fetch
@@ -36,7 +38,12 @@ class MlAccount < ActiveRecord::Base
           subject: "#{mail.subject.gsub('"', '\"')}",
           body: "#{body.gsub('"', '\"')}"
         )
+        puts "load new mail: #{mail.subject}"
       end
     end
+  end
+
+  def subject_prefix_to_regexp
+    self.subject_prefix.sub('%d', '\d+')
   end
 end

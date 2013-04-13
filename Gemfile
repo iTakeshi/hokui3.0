@@ -32,7 +32,7 @@ gem 'kaminari'
 gem 'gmail'
 gem 'mail', github: 'iTakeshi/mail', branch: 'fix_UndefinedConversionError'
 
-gem 'whenever', require: false
+gem 'whenever', require: false, github: 'iTakeshi/whenever', branch: 'rails4'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'

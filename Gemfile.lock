@@ -8,6 +8,15 @@ GIT
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
 
+GIT
+  remote: git://github.com/iTakeshi/whenever.git
+  revision: 7a96afab2c3c6598c36b6d3a8f6b28dc8f9cb449
+  branch: rails4
+  specs:
+    whenever (0.8.2)
+      activesupport (>= 2.3.4)
+      chronic (>= 0.6.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -163,9 +172,6 @@ GEM
       unf_ext
     unf_ext (0.0.6)
     webrobots (0.1.1)
-    whenever (0.8.2)
-      activesupport (>= 2.3.4)
-      chronic (>= 0.6.3)
 
 PLATFORMS
   ruby
@@ -189,4 +195,4 @@ DEPENDENCIES
   therubyracer
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
-  whenever
+  whenever!
