@@ -61,5 +61,8 @@ HokuiNet::Application.routes.draw do
   get '/calendar' => 'index#calendar'
   get '/help' => 'index#help'
 
+  # delete me
+  get '/vocabularies' => 'index#vocabulary'
+
   root to: 'index#index'
 end

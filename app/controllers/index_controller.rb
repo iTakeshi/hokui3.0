@@ -18,4 +18,8 @@ class IndexController < ApplicationController
 
   def help
   end
+
+  # delete me
+  def vocabulary
+  end
 end
