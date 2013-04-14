@@ -1,0 +1,18 @@
+<h1>カレンダー設定</h1>
+
+<h3><%= @year.class_year %>期</h3>
+
+<%= form_for @year, url: admin_year_path(@year), html: { class: "form-horizontal" } do |f| %>
+    <div class="control-group">
+      <%= f.label :calendar_id, 'カレンダーID', class: "control-label" %>
+      <div class="controls">
+        <%= f.text_field :calendar_id %>
+        @group.calendar.google.com
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit '登録', class: 'btn btn-primary', data: { disable_with: '送信中...' } %>
+    </div>
+  </fieldset>
+<% end %>
