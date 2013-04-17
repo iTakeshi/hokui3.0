@@ -16,7 +16,7 @@
   <% @ml_archives.each do |a| %>
     <tr>
       <td><%= a.from %></td>
-      <td><%= a.sent_at %></td>
+      <td><%= a.sent_at.to_s(:db) %></td>
       <td><%= a.subject %></td>
       <td><%= truncate(a.body) %></td>
       <td><button type="button" class="btn btn-mini download-ml-body" data-download-body-path="<%= ml_download_path(a) %>">全文</button></td>

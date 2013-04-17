@@ -15,7 +15,7 @@
     <h2><%= link_to image_tag('study.gif', style: 'margin-right: 15px;') + "Study", study_path, style: 'color: #333;' %></h2>
     <dl>
       <% @new_materials.each do |m| %>
-        <dt><%= m.updated_at.to_datetime %></dt>
+        <dt><%= m.updated_at.to_s(:db) %></dt>
         <dd>
           <%= m.user.handle_name %>さんが<%= m.subject.title_ja %>
           <%= m.material_type_to_str %>を<%= m.created_at == m.updated_at ? 'up' : '更新' %> <br>
@@ -36,7 +36,7 @@
     <h2><%= link_to image_tag('ml.gif', style: 'margin-right: 15px;') + 'Mailing List', ml_path, style: 'color: #333;' %></h2>
     <dl>
       <% @ml_archives.each do |a| %>
-        <dt><%= a.sent_at %></dt>
+        <dt><%= a.sent_at.to_s(:db) %></dt>
         <dd>
           <%= a.from %>からの投稿<br>
           subject: <%= a.subject %>
