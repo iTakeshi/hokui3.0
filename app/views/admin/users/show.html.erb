@@ -10,7 +10,7 @@
   <dt>ニックネーム</dt><dd><%= @user.handle_name %></dd>
   <dt>生年月日</dt><dd><%= @user.birthday %></dd>
   <dt>ELMSメール</dt><dd><%= @user.email_official %></dd>
-  <dt>携帯メール</dt><dd><%= @user.email_private %></dd>
+  <dt>携帯メール</dt><dd><%= @user.email_private.blank? ? '登録なし' : @user.email_private %></dd>
   <dt>期</dt><dd><%= @user.year.class_year %></dd>
   <dt>最終ログイン日時</dt><dd><%= @user.last_login_at ? @user.last_login_at : '未ログイン' %></dd>
   <dt>登録日</dt><dd><%= @user.created_at.to_date %></dd>
