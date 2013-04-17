@@ -15,7 +15,7 @@
   </tr>
   <% @ml_archives.each do |a| %>
     <tr>
-      <td><%= a.from %></td>
+      <td><%= a.from_to_str %></td>
       <td><%= a.sent_at.to_s(:db) %></td>
       <td><%= a.subject %></td>
       <td><%= truncate(a.body) %></td>
