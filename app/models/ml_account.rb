@@ -18,7 +18,7 @@ class MlAccount < ActiveRecord::Base
 
       mails.sort {|a, b| a.subject <=> b.subject}.each do |mail|
         if self.subject_prefix
-          next if mail.subject !~ %r(#{self.subject_prefix_to_regexp})
+          next if mail.subject !~ self.subject_prefix_to_regexp
         end
 
         if mail.multipart?
@@ -44,6 +44,6 @@ class MlAccount < ActiveRecord::Base
   end
 
   def subject_prefix_to_regexp
-    self.subject_prefix.sub('%d', '\d+')
+    Regexp.compile(Regexp.escape(self.subject_prefix).sub('%d', '\d+'))
   end
 end
