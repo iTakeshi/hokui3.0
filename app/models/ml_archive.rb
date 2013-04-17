@@ -15,6 +15,19 @@ class MlArchive < ActiveRecord::Base
     end
   end
 
+  def strip_subject
+    return self.stripped_subject if self.stripped_subject
+
+    regexp = self.ml_account.subject_prefix_to_regexp
+    if self.subject.match(regexp)
+      self.stripped_subject = self.subject.sub(regexp, '').strip
+      self.save!
+      return self.stripped_subject
+    else
+      return self.subject
+    end
+  end
+
   def body_to_html
     self.body.gsub("\n", "<br>").html_safe
   end

@@ -38,8 +38,8 @@
       <% @ml_archives.each do |a| %>
         <dt><%= a.sent_at.to_s(:db) %></dt>
         <dd>
-          <%= a.from %>からの投稿<br>
-          subject: <%= a.subject %>
+          <%= a.from_to_str %>からの投稿<br>
+          subject: <%= a.strip_subject %>
         </dd>
       <% end %>
   </div>

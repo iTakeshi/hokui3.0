@@ -17,7 +17,7 @@
     <tr>
       <td><%= a.from_to_str %></td>
       <td><%= a.sent_at.to_s(:db) %></td>
-      <td><%= a.subject %></td>
+      <td><%= a.strip_subject %></td>
       <td><%= truncate(a.body) %></td>
       <td><button type="button" class="btn btn-mini download-ml-body" data-download-body-path="<%= ml_download_path(a) %>">全文</button></td>
     </tr>

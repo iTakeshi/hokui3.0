@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130414105750) do
+ActiveRecord::Schema.define(version: 20130417083858) do
 
   create_table "materials", force: true do |t|
     t.integer  "subject_id",                         null: false
@@ -43,15 +43,16 @@ ActiveRecord::Schema.define(version: 20130414105750) do
   add_index "ml_accounts", ["year_id"], name: "index_ml_accounts_on_year_id"
 
   create_table "ml_archives", force: true do |t|
-    t.integer  "ml_account_id",  null: false
-    t.string   "from",           null: false
+    t.integer  "ml_account_id",    null: false
+    t.string   "from",             null: false
     t.string   "from_name"
-    t.datetime "sent_at",        null: false
-    t.string   "subject",        null: false
+    t.datetime "sent_at",          null: false
+    t.string   "subject",          null: false
     t.integer  "archive_number"
-    t.text     "body",           null: false
+    t.text     "body",             null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "stripped_subject"
   end
 
   add_index "ml_archives", ["ml_account_id"], name: "index_ml_archives_on_ml_account_id"
