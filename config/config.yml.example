@@ -1,0 +1,8 @@
+development:
+
+production:
+  gmail:
+    user: 'username'
+    pass: 'password'
+
+test:
