@@ -69,6 +69,8 @@ class Material < ActiveRecord::Base
       return "中間"
     when 12
       return "期末"
+    when 21
+      return "追再試"
     end
   end
 

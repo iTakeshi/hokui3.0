@@ -28,7 +28,7 @@
         <%= f.label :number, class: 'control-label' %>
         <div class="controls">
           <% if @material.material_type == 'exam' %>
-            <%= f.select :number, options_for_select('中間' => 11, '期末' => 12, '第1回' => 1, '第2回' => 2, '第3回' => 3, '第4回' => 4, '第5回' => 5, '第6回' => 6), prompt: '選択' %>
+            <%= f.select :number, options_for_select('中間' => 11, '期末' => 12, '第1回' => 1, '第2回' => 2, '第3回' => 3, '第4回' => 4, '第5回' => 5, '第6回' => 6, '追再試' => 21), prompt: '選択' %>
             試験がその教科を通して2回までの時は「中間」or「期末」、3回以上あるときは「第○回」
           <% else %>
             <%= f.number_field :number %>
