@@ -54,7 +54,7 @@
     <div class="control-group">
       <%= f.label :year_id, '期', class: 'control-label' %>
       <div class="controls">
-        <%= f.select :year_id, options_from_collection_for_select(Year.all, :id, :class_year), prompt: '選択' %>
+        <%= f.select :year_id, options_from_collection_for_select(Year.all, :id, :class_year, selected: @user.year.id) %>
       </div>
     </div>
 
