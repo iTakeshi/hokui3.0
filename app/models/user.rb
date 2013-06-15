@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   scope :admins, -> { where(is_admin: true) }
 
   class << self
-    def new_account(**user_params)
+    def new_account(user_params)
       user = self.new(user_params)
       user.is_admin = false
       user.status = 1
