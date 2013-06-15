@@ -43,25 +43,6 @@ set :whenever_command, "bundle exec whenever"
 require 'whenever/capistrano'
 
 load 'deploy/assets'
-after "deploy:assets:precompile", "deploy:assets:link_manifest"
-
-# Dirty hack to enable to deploy rais 4 app with current-version capistrano
-set :asset_env, "RAILS_GROUPS=assets"
-set :assets_role, [:web]
-namespace :deploy do
-  namespace :assets do
-    task :precompile, :roles => assets_role, :except => { :no_release => true } do
-      run <<-CMD.compact
-        cd -- #{latest_release.shellescape} &&
-        #{rake} RAILS_ENV=#{rails_env.to_s.shellescape} #{asset_env} assets:precompile
-      CMD
-    end
-
-    task :link_manifest do
-      run "ruby #{shared_path}/assets/compile_manifest.rb"
-    end
-  end
-end
 
 task :setup_shared_dirs, :roles => :app do
   run "#{try_sudo} mkdir -p -m 755 #{shared_path}/config"
