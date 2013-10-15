@@ -4,10 +4,17 @@ class Material < ActiveRecord::Base
 
   validates_inclusion_of :material_type, in: %w(exam quiz note personal_file)
 
+  validates_presence_of :class_year, if: Proc.new { self.material_type?('exam', 'quiz', 'note') }
+  validates_presence_of :number,     if: Proc.new { self.material_type?('exam', 'quiz', 'note') }
+
   scope :exams,          -> { where(material_type: 'exam') }
   scope :quizzes,        -> { where(material_type: 'quiz') }
   scope :notes,          -> { where(material_type: 'note') }
   scope :personal_files, -> { where(material_type: 'personal_file') }
+
+  def material_type?(*types)
+    types.include? self.material_type
+  end
 
   def set_page
     last_page = Material.where(file_name: self.file_name).pluck(:page).max
