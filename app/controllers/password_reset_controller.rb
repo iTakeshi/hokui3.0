@@ -39,6 +39,7 @@ class PasswordResetController < ApplicationController
 
     if params[:password] == params[:password_confirmation]
       @user.password = params[:password]
+      @user.password_confirmation = params[:password_confirmation]
       @user.status = 0
       @user.save!
       redirect_to login_path, notice: 'パスワードを再設定しました。'
