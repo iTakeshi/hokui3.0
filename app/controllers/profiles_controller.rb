@@ -21,6 +21,7 @@ class ProfilesController < ApplicationController
     if @current_user.authenticate(params[:current_password])
       if params[:password] == params[:password_confirmation]
         @current_user.password = params[:password]
+        @current_user.password_confirmation = params[:password_confirmation]
         @current_user.save!
         redirect_to edit_profile_path, notice: 'パスワードを更新しました。'
       else
