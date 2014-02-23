@@ -7,7 +7,7 @@ class Year < ActiveRecord::Base
   validates_uniqueness_of :class_year
 
   def to_param
-    class_year
+    class_year.to_s
   end
 
   def current_semester
