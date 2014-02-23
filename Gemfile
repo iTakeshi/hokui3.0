@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.rc2'
+gem 'rails', '4.0.3'
 
 group :test, :development do
   gem 'sqlite3'
@@ -15,26 +15,26 @@ end
 # in production environments by default.
 group :assets do
   gem 'less-rails'
-  gem 'coffee-rails', '~> 4.0.0.beta1'
+  gem 'coffee-rails', '~> 4.0.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   gem 'therubyracer', platforms: :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier', '>= 1.3.0'
 end
 
 gem 'jquery-rails'
 
-gem 'twitter-bootstrap-rails', '2.2.6'
+gem 'twitter-bootstrap-rails', '2.2.8'
 
 gem 'i18n_generators'
 
 gem 'kaminari'
 
 gem 'gmail'
-gem 'mail', github: 'iTakeshi/mail', branch: 'fix_UndefinedConversionError'
+gem 'mail'
 
-gem 'whenever', require: false, github: 'iTakeshi/whenever', branch: 'rails4'
+gem 'whenever', require: false
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 # gem 'turbolinks'
