@@ -14,7 +14,7 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'less-rails'
+  gem 'less-rails', '2.3.3'
   gem 'coffee-rails', '~> 4.0.0'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -25,7 +25,7 @@ end
 
 gem 'jquery-rails'
 
-gem 'twitter-bootstrap-rails', '2.2.8'
+gem 'twitter-bootstrap-rails', '2.2.6'
 
 gem 'i18n_generators'
 
@@ -43,13 +43,13 @@ gem 'whenever', require: false
 # gem 'jbuilder', '~> 1.0.1'
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'
 
 # Deploy with Capistrano
-gem 'capistrano', group: :development
+gem 'capistrano', '~> 2.0', group: :development
 
 # To use debugger
 # gem 'debugger', group: [:development, :test]
